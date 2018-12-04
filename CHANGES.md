@@ -2,7 +2,8 @@
 
 ## 0.2.0
 
-- Enhancement: Support conversion of to-be-released Typeson format
+- Enhancement: Support conversion of to-be-released
+    typeson-registry format
 - Linting (Markdown): Fix format
 - Docs: Indicate usable for non-IndexedDBShim uses; indicate
     new types may still be added
