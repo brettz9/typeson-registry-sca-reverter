@@ -16,8 +16,24 @@ function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
 }
 
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
+  }
+}
+
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArray(iter) {
+  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
 }
 
 function _iterableToArrayLimit(arr, i) {
@@ -44,6 +60,10 @@ function _iterableToArrayLimit(arr, i) {
   }
 
   return _arr;
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
 }
 
 function _nonIterableRest() {
@@ -124,7 +144,7 @@ var typesonRegistrySCAReverter = function traverseMapToRevertToLegacyTypeNames(o
     //   `arrayNonindexKeys`.
     obj.some(function (type, i) {
       if ('arrayNonindexKeys' in type) {
-        obj.splice(i, 1, sparseUndefined);
+        obj.splice.apply(obj, [i, 1].concat(_toConsumableArray(sparseUndefined)));
         return true;
       }
 

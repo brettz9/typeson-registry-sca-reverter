@@ -1,5 +1,11 @@
 # CHANGES for typeson-registry-sca-reverter
 
+## 0.2.1
+
+- Fix: Ensure `sparseUndefined` is spread into array
+- Linting (ESLint): Report unused directives
+- npm: Update devDeps
+
 ## 0.2.0
 
 - Enhancement: Support conversion of to-be-released

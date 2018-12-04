@@ -40,7 +40,7 @@ export const typesonRegistrySCAReverter = function traverseMapToRevertToLegacyTy
         //   `arrayNonindexKeys`.
         obj.some((type, i) => {
             if ('arrayNonindexKeys' in type) {
-                obj.splice(i, 1, sparseUndefined);
+                obj.splice(i, 1, ...sparseUndefined);
                 return true;
             }
             return false;
