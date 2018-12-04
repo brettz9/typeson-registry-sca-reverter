@@ -1,7 +1,7 @@
 {
   "name": "typeson-registry-sca-reverter",
   "description": "Revert to older form of typeson-registry Structured Cloning Algorithm representation",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "homepage": "https://github.com/brettz9/typeson-registry-sca-reverter",
   "author": "Brett Zamir",
   "contributors": [],
@@ -21,8 +21,8 @@
   "scripts": {
     "eslint": "eslint .",
     "build": "rollup -c",
-    "test": "npm run eslint && npm run build",
-    "browser-test": "npm run eslint && npm run build"
+    "test": "npm run eslint && npm run build && echo 'No Node tests presently!'",
+    "browser-test": "npm run eslint && npm run build && echo 'No browser tests presently!'"
   },
   "dependencies": {},
   "devDependencies": {
@@ -35,7 +35,10 @@
     "eslint-plugin-promise": "4.0.1",
     "eslint-plugin-standard": "4.0.0",
     "rollup": "0.66.6",
-    "rollup-plugin-babel": "^4.0.3"
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "typeson-registry": "^1.0.0-alpha.23"
   },
   "keywords": [
     "typeson-registry",

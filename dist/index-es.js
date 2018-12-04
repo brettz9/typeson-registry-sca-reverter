@@ -50,6 +50,41 @@ function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance");
 }
 
+var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var sparseUndefined = createCommonjsModule(function (module, exports) {
+!function (e, n) {
+  module.exports = n();
+}(commonjsGlobal, function () {
+
+  return [{
+    sparseArrays: {
+      testPlainObjects: !0,
+      test: function test(e) {
+        return Array.isArray(e);
+      },
+      replace: function replace(e, n) {
+        return n.iterateUnsetNumeric = !0, e;
+      }
+    }
+  }, {
+    sparseUndefined: {
+      test: function test(e, n) {
+        return void 0 === e && !1 === n.ownKeys;
+      },
+      replace: function replace(e) {
+        return null;
+      },
+      revive: function revive(e) {}
+    }
+  }];
+});
+});
+
 var newTypeNamesToLegacy = {
   IntlCollator: 'Intl.Collator',
   IntlDateTimeFormat: 'Intl.DateTimeFormat',
@@ -84,6 +119,17 @@ var newTypeNamesToLegacy = {
 };
 var typesonRegistrySCAReverter = function traverseMapToRevertToLegacyTypeNames(obj) {
   if (Array.isArray(obj)) {
+    // Structured Cloning and Builtins had been used `sparseUndefined`
+    //   previously (through the `undef` preset) instead of
+    //   `arrayNonindexKeys`.
+    obj.some(function (type, i) {
+      if ('arrayNonindexKeys' in type) {
+        obj.splice(i, 1, sparseUndefined);
+        return true;
+      }
+
+      return false;
+    });
     return obj.forEach(traverseMapToRevertToLegacyTypeNames);
   }
 

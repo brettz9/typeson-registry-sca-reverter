@@ -1,3 +1,5 @@
+import sparseUndefined from 'typeson-registry/dist/presets/sparse-undefined';
+
 const newTypeNamesToLegacy = {
     IntlCollator: 'Intl.Collator',
     IntlDateTimeFormat: 'Intl.DateTimeFormat',
@@ -33,6 +35,16 @@ const newTypeNamesToLegacy = {
 
 export const typesonRegistrySCAReverter = function traverseMapToRevertToLegacyTypeNames (obj) {
     if (Array.isArray(obj)) {
+        // Structured Cloning and Builtins had been used `sparseUndefined`
+        //   previously (through the `undef` preset) instead of
+        //   `arrayNonindexKeys`.
+        obj.some((type, i) => {
+            if ('arrayNonindexKeys' in type) {
+                obj.splice(i, 1, sparseUndefined);
+                return true;
+            }
+            return false;
+        });
         return obj.forEach(traverseMapToRevertToLegacyTypeNames);
     }
     if (obj && typeof obj === 'object') { // Should be all

@@ -10,7 +10,15 @@ Structured Cloning Algorithm serialization/parsing format by default.
 
 This small utility allows IndexedDBShim databases created under version
 3.0.0 (and thus the earlier typeson-registry format) to be used with
-version 4.0.0 of IndexedDBShim.
+version 4.0.0 of IndexedDBShim. (It should also be usable for
+converting back typeson-registry storage for non-IndexedDBShim uses as
+well.)
+
+Note that it does not prevent new types added to
+typeson-registry/IndexedDBShim from being usable (e.g., `BigInt`),
+so data stored under the converted form will not be usable on older versions
+of IndexedDBShim, but it does allow data stored under older versions of
+IndexedDBShim to continue to be read.
 
 You must set config early, e.g., within the call to `setGlobalVars` in
 the non-invasive distribution of IndexedDBShim.

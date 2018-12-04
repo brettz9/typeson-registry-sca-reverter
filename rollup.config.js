@@ -1,4 +1,10 @@
 import babel from 'rollup-plugin-babel';
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
+
+// While typeson-registry has an ES distribution, it does not have so for
+//  the `sparse-undefined` preset (we could add source, but that might
+//  not be resolvable)
 
 export default [{
     input: 'src/index.js',
@@ -8,7 +14,9 @@ export default [{
         name: 'typesonRegistrySCAReverter'
     },
     plugins: [
-        babel()
+        babel(),
+        resolve(),
+        commonjs()
     ]
 }, {
     input: 'src/index.js',
@@ -17,6 +25,10 @@ export default [{
         format: 'es'
     },
     plugins: [
-        babel()
+        babel(),
+        resolve({
+            module: true
+        }),
+        commonjs()
     ]
 }];
