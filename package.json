@@ -19,7 +19,7 @@
     "node": ">= 6.4.0"
   },
   "scripts": {
-    "eslint": "eslint .",
+    "eslint": "eslint --report-unused-disable-directives .",
     "build": "rollup -c",
     "test": "npm run eslint && npm run build && echo 'No Node tests presently!'",
     "browser-test": "npm run eslint && npm run build && echo 'No browser tests presently!'"
