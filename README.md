@@ -23,6 +23,10 @@ IndexedDBShim to continue to be read.
 You must set config early, e.g., within the call to `setGlobalVars` in
 the non-invasive distribution of IndexedDBShim.
 
+Note that while the code was mostly the same as that working previously
+within IndexedDBShim, some code has been added without testing, so you
+ought to do your own testing to confirm.
+
 ```js
 setGlobalVars(null, {
     registerSCA: typesonRegistrySCAReverter
@@ -37,3 +41,7 @@ shimIndexedDB.__setConfig({
 });
 // Safe to use indexedDB now...
 ```
+
+## To-dos
+
+1. Add tests
