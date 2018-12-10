@@ -35,11 +35,21 @@ const newTypeNamesToLegacy = {
 
 export const typesonRegistrySCAReverter = function traverseMapToRevertToLegacyTypeNames (obj) {
     if (Array.isArray(obj)) {
-        // Structured Cloning and Builtins had been used `sparseUndefined`
+        // Structured Cloning and Builtins had been using `sparseUndefined`
         //   previously (through the `undef` preset) instead of
         //   `arrayNonindexKeys`.
         obj.some((type, i) => {
             if ('arrayNonindexKeys' in type) {
+                const j = i + 1;
+                const nextObject = obj[j];
+                if (nextObject && typeof nextObject === 'object' &&
+                    'sparseUndefined' in nextObject
+                ) {
+                    // Remove `sparseUndefined` if also present
+                    //   (latest version has both), so we can
+                    //   add back with full preset in next step
+                    obj.splice(j, 1);
+                }
                 obj.splice(i, 1, ...sparseUndefined);
                 return true;
             }

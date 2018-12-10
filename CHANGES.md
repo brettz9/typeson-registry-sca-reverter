@@ -1,5 +1,10 @@
 # CHANGES for typeson-registry-sca-reverter
 
+## 0.3.0
+
+- Enhancement: Handle still newer typeon-registry version of
+    `arrayNonindexKeys`
+
 ## 0.2.1
 
 - Fix: Ensure `sparseUndefined` is spread into array
