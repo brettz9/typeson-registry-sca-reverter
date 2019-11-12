@@ -1,5 +1,14 @@
 # CHANGES for typeson-registry-sca-reverter
 
+## 0.4.0
+
+- Fix: `dist` had not been updated
+- Linting (ESLint): Use ash-nazg; use a recommended extension (js),
+  check MD and HTML
+- Maintenance: Add `.editorconfig`
+- npm: Bump devDeps
+- npm: Bump to 0.3.1
+
 ## 0.3.0
 
 - Enhancement: Handle still newer typeon-registry version of

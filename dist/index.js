@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (factory((global.typesonRegistrySCAReverter = {})));
+  (global = global || self, factory(global.typesonRegistrySCAReverter = {}));
 }(this, (function (exports) { 'use strict';
 
   function _typeof(obj) {
@@ -43,6 +43,10 @@
   }
 
   function _iterableToArrayLimit(arr, i) {
+    if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+      return;
+    }
+
     var _arr = [];
     var _n = true;
     var _d = false;
@@ -76,7 +80,7 @@
     throw new TypeError("Invalid attempt to destructure non-iterable instance");
   }
 
-  var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+  var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
   function createCommonjsModule(fn, module) {
   	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -84,7 +88,7 @@
 
   var sparseUndefined = createCommonjsModule(function (module, exports) {
   !function (e, n) {
-    module.exports = n();
+     module.exports = n() ;
   }(commonjsGlobal, function () {
 
     return [{
@@ -143,20 +147,33 @@
     float32array: 'Float32Array',
     float64array: 'Float64Array'
   };
-  var typesonRegistrySCAReverter = function traverseMapToRevertToLegacyTypeNames(obj) {
+  var typesonRegistrySCAReverter = function typesonRegistrySCAReverter(obj) {
     if (Array.isArray(obj)) {
-      // Structured Cloning and Builtins had been used `sparseUndefined`
+      // Structured Cloning and Builtins had been using `sparseUndefined`
       //   previously (through the `undef` preset) instead of
       //   `arrayNonindexKeys`.
       obj.some(function (type, i) {
         if ('arrayNonindexKeys' in type) {
+          var j = i + 1;
+          var nextObject = obj[j];
+
+          if (nextObject && _typeof(nextObject) === 'object' && 'sparseUndefined' in nextObject) {
+            // Remove `sparseUndefined` if also present
+            //   (latest version has both), so we can
+            //   add back with full preset in next step
+            obj.splice(j, 1);
+          }
+
           obj.splice.apply(obj, [i, 1].concat(_toConsumableArray(sparseUndefined)));
           return true;
         }
 
         return false;
       });
-      return obj.forEach(traverseMapToRevertToLegacyTypeNames);
+      obj.forEach(function (x) {
+        return typesonRegistrySCAReverter(x);
+      });
+      return;
     }
 
     if (obj && _typeof(obj) === 'object') {

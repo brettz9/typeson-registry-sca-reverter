@@ -29,7 +29,7 @@ ought to do your own testing to confirm.
 
 ```js
 setGlobalVars(null, {
-    registerSCA: typesonRegistrySCAReverter
+  registerSCA: typesonRegistrySCAReverter
 });
 ```
 
@@ -37,7 +37,7 @@ Or you may set the config before any indexedDB calls:
 
 ```js
 shimIndexedDB.__setConfig({
-    registerSCA: typesonRegistrySCAReverter
+  registerSCA: typesonRegistrySCAReverter
 });
 // Safe to use indexedDB now...
 ```
