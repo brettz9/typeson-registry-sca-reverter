@@ -87,8 +87,8 @@
   }
 
   var sparseUndefined = createCommonjsModule(function (module, exports) {
-  !function (e, n) {
-     module.exports = n() ;
+  !function (e, t) {
+     module.exports = t() ;
   }(commonjsGlobal, function () {
 
     return [{
@@ -97,17 +97,17 @@
         test: function test(e) {
           return Array.isArray(e);
         },
-        replace: function replace(e, n) {
-          return n.iterateUnsetNumeric = !0, e;
+        replace: function replace(e, t) {
+          return t.iterateUnsetNumeric = !0, e;
         }
       }
     }, {
       sparseUndefined: {
-        test: function test(e, n) {
-          return void 0 === e && !1 === n.ownKeys;
+        test: function test(e, t) {
+          return void 0 === e && !1 === t.ownKeys;
         },
         replace: function replace(e) {
-          return null;
+          return 0;
         },
         revive: function revive(e) {}
       }

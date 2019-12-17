@@ -1,5 +1,5 @@
 import babel from 'rollup-plugin-babel';
-import resolve from 'rollup-plugin-node-resolve';
+import resolve from '@rollup/plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 
 // While typeson-registry has an ES distribution, it does not have so for
@@ -28,7 +28,7 @@ export default [{
   plugins: [
     babel(),
     resolve({
-      module: true
+      mainFields: ['module']
     }),
     commonjs()
   ]

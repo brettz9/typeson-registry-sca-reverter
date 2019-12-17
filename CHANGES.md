@@ -1,5 +1,11 @@
 # CHANGES for typeson-registry-sca-reverter
 
+## 0.5.0
+
+- Build: Use updated Rollup plugin API; use latest typeson-registry
+- npm: Switch to non-deprecated `@rollup/plugin-node-resolve`
+- npm: Update devDeps
+
 ## 0.4.0
 
 - Fix: `dist` had not been updated
