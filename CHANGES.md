@@ -1,5 +1,9 @@
 # CHANGES for typeson-registry-sca-reverter
 
+## ?
+
+- npm: Update devDeps
+
 ## 0.5.0
 
 - Build: Use updated Rollup plugin API; use latest typeson-registry
