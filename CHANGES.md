@@ -1,7 +1,8 @@
 # CHANGES for typeson-registry-sca-reverter
 
-## ?
+## 0.6.0
 
+- Build: Update
 - npm: Update devDeps
 
 ## 0.5.0
