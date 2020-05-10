@@ -1,6 +1,6 @@
 # CHANGES for typeson-registry-sca-reverter
 
-## ?
+## 0.7.0
 
 - Build: Update as per latest devDeps.
 - Linting: As per latest ash-nazg/ESLint 7

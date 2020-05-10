@@ -1,7 +1,7 @@
 {
   "name": "typeson-registry-sca-reverter",
   "description": "Revert to older form of typeson-registry Structured Cloning Algorithm representation",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "homepage": "https://github.com/brettz9/typeson-registry-sca-reverter",
   "author": "Brett Zamir",
   "contributors": [],
