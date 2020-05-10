@@ -1,7 +1,8 @@
+'use strict';
 module.exports = {
-  extends: ["ash-nazg/sauron"],
+  extends: ['ash-nazg/sauron'],
   parserOptions: {
-    sourceType: "module"
+    sourceType: 'module'
   },
   settings: {
     polyfills: [
@@ -9,6 +10,13 @@ module.exports = {
     ]
   },
   overrides: [
+    {
+      files: '.eslintrc.js',
+      extends: ['plugin:node/recommended-script'],
+      rules: {
+        'import/no-commonjs': 0
+      }
+    },
     {
       files: ['*.md'],
       globals: {

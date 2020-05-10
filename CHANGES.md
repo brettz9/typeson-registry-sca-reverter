@@ -1,5 +1,13 @@
 # CHANGES for typeson-registry-sca-reverter
 
+## ?
+
+- Build: Update as per latest devDeps.
+- Linting: As per latest ash-nazg/ESLint 7
+- npm: Update `rollup-plugin-babel` to `@rollup/plugin-babel`
+  and make explicit `babelHelpers` as `bundled`
+- npm: Update devDeps
+
 ## 0.6.0
 
 - Build: Update
