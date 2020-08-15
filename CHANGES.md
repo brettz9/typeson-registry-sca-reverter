@@ -1,5 +1,13 @@
 # CHANGES for typeson-registry-sca-reverter
 
+## 0.8.0
+
+- Build: Update per latest devDeps.
+- Maintenance: Use recommended "json" extension in Babel file
+- Linting: As per latest ash-nazg
+- npm: Change to non-deprecated `@rollup/plugin-commonjs`
+- npm: Update devDeps.
+
 ## 0.7.0
 
 - Build: Update as per latest devDeps.

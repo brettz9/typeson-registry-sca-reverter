@@ -1,12 +1,12 @@
 import babel from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
+import commonjs from '@rollup/plugin-commonjs';
 
 // While typeson-registry has an ES distribution, it does not have so for
 //  the `sparse-undefined` preset (we could add source, but that might
 //  not be resolvable)
 
-// eslint-disable-next-line import/no-anonymous-default-export
+// eslint-disable-next-line import/no-anonymous-default-export -- Rollup
 export default [{
   input: 'src/index.js',
   output: {
